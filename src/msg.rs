@@ -1,30 +1,28 @@
-use cosmwasm_schema::{cw_serde, QueryResponses};
-use sei_cosmwasm::{
-  ContractOrderResult
-};
+use serde::{Deserialize, Serialize};
+use schemars::JsonSchema;
+use crate::sei_type::{ContractOrderResult};
 
-#[cw_serde]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InstantiateMsg {
     pub count: i32,
 }
 
-#[cw_serde]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub enum ExecuteMsg {
     Increment {},
     IncrementAdv { contract_order_results: Vec<ContractOrderResult> },
     Reset { count: i32 },
 }
 
-#[cw_serde]
-#[derive(QueryResponses)]
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub enum QueryMsg {
     // GetCount returns the current count as a json-encoded number
-    #[returns(GetStateResponse)]
     GetState {},
 }
 
 // We define a custom struct for each query response
-#[cw_serde]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct GetStateResponse {
     pub count: i32,
     pub order_id: u64

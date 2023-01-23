@@ -1,0 +1,1 @@
+88c9a619713b17f699237e755ed365e2d68c0cbf9e27e2ad1d72950c3789027f  ./target/wasm32-unknown-unknown/release/just_contract.wasm
